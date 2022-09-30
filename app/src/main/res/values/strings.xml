@@ -1,0 +1,35 @@
+<resources>
+    <string name="app_name">ExamenUnidad1</string>
+
+    /* Login */
+    <string name="usr">Usuario</string>
+    <string name="psw">Contraseña</string>
+    <string name="btnLogin">Entrar</string>
+
+    /* Escenarios */
+    <string name="esc1">Escenario 1</string>
+    <string name="esc2">Escenario 2</string>
+    <string name="esc3">Escenario 3</string>
+
+
+    /* Esc 1 */
+    <string name="txDNI">DNI</string>
+    <string name="txNombre">Nombre</string>
+    <string name="txCarrera">Carrera</string>
+
+    <string name="rbtnH">H</string>
+    <string name="rbtnM">M</string>
+
+    <string name="btnSig">Siguiente</string>
+
+    /* Esc 1 Resumen */
+    <string name="et1">Los datos ingresados son</string>
+
+    /* Esc 2 */
+    <string name="et2">Contador:</string>
+    <string name="btnSuma">+</string>
+    <string name="btnResta">-</string>
+    <string name="btnReset">Resetear</string>
+    <string name="chNegativo">Conteo Negativo</string>
+
+</resources>
