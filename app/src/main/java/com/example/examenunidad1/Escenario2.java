@@ -18,6 +18,7 @@ public class Escenario2 extends AppCompatActivity {
     TextView etNum;
 
     int numero = 0;
+    String valor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +33,12 @@ public class Escenario2 extends AppCompatActivity {
 
         etNum = (TextView) findViewById(R.id.etNumero);
 
-        etNum.setText(String.valueOf(numero));
+        SharedPreferences preferences = getSharedPreferences("datos",Context.MODE_PRIVATE);
+        valor = preferences.getString("valor","");
+
+        etNum.setText(valor);
+        numero = Integer.parseInt(valor);
+
     }
 
     public void sumar (View view) {
@@ -40,48 +46,49 @@ public class Escenario2 extends AppCompatActivity {
         int suma = numero + 1;
         numero = suma;
 
-        String valor = String.valueOf(suma);
+        valor = String.valueOf(suma);
 
         etNum.setText(valor);
 
-        SharedPreferences preferences = getSharedPreferences("valor", Context.MODE_PRIVATE);
-        SharedPreferences.Editor objeto_editor = preferences.edit();
-        objeto_editor.putString("valor", String.valueOf(numero));
-        objeto_editor.commit();
-
+        SharedPreferences preferences = getSharedPreferences("datos", Context.MODE_PRIVATE);
+        SharedPreferences.Editor obj_editor = preferences.edit();
+        obj_editor.putString("valor",valor);
+        obj_editor.commit();
     }
 
     public void resta (View view) {
 
+        if (numero > 0) {
+            int resta = numero - 1;
+            numero = resta;
+            valor = String.valueOf(resta);
+            etNum.setText(valor);
+
+        }
         if(numero <= 0 && chNeg.isChecked()){
             int resta = numero - 1;
             numero = resta;
-
-            String valor = String.valueOf(resta);
-
+            valor = String.valueOf(resta);
             etNum.setText(valor);
-        } if (numero > 0) {
-            int resta = numero - 1;
-            numero = resta;
 
-            String valor = String.valueOf(resta);
-
-            etNum.setText(valor);
-        } else {
-            Toast.makeText(this, "Activar casilla numeros negativos", Toast.LENGTH_SHORT).show();
         }
 
-        SharedPreferences preferences = getSharedPreferences("valor", Context.MODE_PRIVATE);
-        SharedPreferences.Editor objeto_editor = preferences.edit();
-        objeto_editor.putString("valor", String.valueOf(numero));
-        objeto_editor.commit();
+        SharedPreferences preferences = getSharedPreferences("datos", Context.MODE_PRIVATE);
+        SharedPreferences.Editor obj_editor = preferences.edit();
+        obj_editor.putString("valor",valor);
+        obj_editor.commit();
     }
 
     public void reset (View view) {
         numero = 0;
-        String valor = String.valueOf(numero);
+        valor = String.valueOf(numero);
 
         etNum.setText(valor);
+
+        SharedPreferences preferences = getSharedPreferences("datos", Context.MODE_PRIVATE);
+        SharedPreferences.Editor obj_editor = preferences.edit();
+        obj_editor.putString("valor",valor);
+        obj_editor.commit();
 
     }
 
